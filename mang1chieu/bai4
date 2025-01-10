@@ -1,0 +1,47 @@
+int n, vtDauTien = -1, vtCuoiCung = -1;
+float x;
+cout << "Nhap n: ";
+cin >> n;
+cout << "Nhap x: ";
+cin >> x;
+float a[n];
+unsigned int i;
+float epsilon = 1e-5;
+
+cout << "Nhap mang " << n << " phan tu:";
+//add
+for(i = 0; i < n; i++)
+    cin >> a[i];
+
+//view
+for(i = 0; i < n; i++)
+    cout << fixed << setprecision(2) << a[i] << "\t" ;
+
+float amDau = 0, duongCuoi = 0;
+for(i = 0; i < n; i++)
+    if (a[i] < 0) {
+        amDau = a[i];
+        cout << endl << "Am dau: " << amDau;
+        break;
+    }
+
+for(i = n - 1; i >= 0; i--)
+    if (a[i] > 0) {
+        duongCuoi = a[i];
+        cout << endl << "Duong cuoi: " << duongCuoi;
+        break;
+    }
+
+for(i = 0; i < n; i++){
+    if(fabs(a[i] - x) < epsilon){
+        if(vtDauTien == -1) vtDauTien = i;
+        vtCuoiCung = i;
+    }
+}
+
+cout << endl;
+
+if(vtDauTien == -1) cout << "Khong tim thay x";
+else cout << "Vi tri dau tien" << vtDauTien;
+if(vtCuoiCung == -1) cout << "x chi xuat hien 1 lan";
+else cout << "Vi tri cuoi cung" << vtCuoiCung;
